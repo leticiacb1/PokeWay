@@ -37,7 +37,11 @@ function Menu(){
     }
 
     function logOut(){
-        navigate('/')
+        let musica = document.getElementById('music');
+        musica.pause();
+        musica.currentTime = 0;
+        console.log("dei o PAUSE. Tá tocando?");
+        navigate('/');
     }
 
     return (

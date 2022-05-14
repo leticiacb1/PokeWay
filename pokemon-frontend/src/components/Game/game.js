@@ -9,6 +9,7 @@ import map3 from "./sprites/map3.png";
 import persona from "./sprites/personaAsh.png";
 import radar from "./sprites/radar.gif";
 import catching from "./sprites/catching.gif";
+import catchingSong from "./PokemonCatch.mp3";
 
 import Background from "../AnimatedBackground/backgroung.js";
 
@@ -36,6 +37,7 @@ function Game(){
     let [baseExperience, setBaseExperience] = useState(['']);
     let [pokeType, setPokeType] = useState(['']);
     let [mapSelected, setMapSelected] = useState(location.state.mapSelected)
+   
 
     async function findPokemon(pokemon){
 
@@ -66,6 +68,8 @@ function Game(){
             let id, type, userId, name, move1, move2, move3, srcImg, favorite;
             document.getElementById("persona").style.visibility = 'hidden';
             setMapSelected("capturando");
+            console.log(document.getElementById("music2"));
+            document.getElementById("music2").play(); 
             let response = await axios.get('https://pokeapi.co/api/v2/pokemon/'+pokeName + '/');
             name = pokeName;
             userId = user;
@@ -156,7 +160,7 @@ function Game(){
 
         let number = randomInt(0,20);
 
-        if(number < 2 && mapSelected !== 'capturando'){
+        if(number < 20 && mapSelected !== 'capturando'){
             let pokemon_name = all_pokemons[randomInt(0, all_pokemons.length)];
             findPokemon(pokemon_name)
         }
@@ -166,6 +170,7 @@ function Game(){
 
     }, [top, left, mapSelected]);
 
+    
 
     
 
@@ -179,10 +184,15 @@ function Game(){
         document.getElementById("persona").style.visibility=  'visible';
         document.getElementById('gif').src='nada';
         //console.log(document.getElementById('gif').src); 
+        let musica = document.getElementById('music2');
+        musica.pause();
+        musica.currentTime = 0;
+        console.log("dei o PAUSE. Tá tocando?");
     }
 
     return (
         <>
+             <audio id="music2" src={catchingSong} type="audio/mp3"/>
              <Background></Background>
         
             <div className="backScreenGame">
@@ -221,7 +231,7 @@ function Game(){
                                     </div>
                                 
                                     <div className="pokemonInfo">
-                                        <h3 className="textInfoName">{pokeName}</h3>
+                                        <h3 className="textInfoName">{pokeName[0].toUpperCase() + pokeName.substr(1)}</h3>
                                         <h3 className="textInfo">Type: {pokeType}</h3>
                                         <h3 className="textInfo">Experience: {baseExperience}</h3>
                                     </div>

@@ -6,17 +6,24 @@ import './loginRegister.css';
 
 import pikachu from "./pikachu.gif";
 import Background from "../AnimatedBackground/backgroung.js";
-import Song from "../BackgroundSong/bgSong.js";
 
 
 // Senha sempre válida: 
 // user: teste , senha: 12345
+
+function tocaMusica(){
+    document.getElementById('music').play();
+    console.log("dei o playyyyy. Tá tocando?");
+}
 
 function LoginOrRegister(){
     const [user, setUser] = useState('')
     const [password, setPassword] = useState('')
     const navigate = useNavigate();
     const location = useLocation();
+    
+   
+   
     
     function handleUpdate(event){
         event.preventDefault();
@@ -85,9 +92,11 @@ function LoginOrRegister(){
 
     }
 
+
     return (
         <>
-            <Song></Song>
+
+            
             <Background></Background>
 
             <div className="backScreenLogin">
@@ -96,18 +105,18 @@ function LoginOrRegister(){
                     {location.pathname == '/' ? <h2 className="typeCount">Login to your account</h2> : <h2 className="typeCount" >Create account</h2>}
                     
                     <form className="formLogin" onSubmit={(event)=>{handleUpdate(event)}} >
-                        <div class="input-parent">
+                        <div className="input-parent">
                             {location.pathname == '/' ? <label>Username</label> : <label>Create username</label>}
                             <input type="text" id="username" onChange={(name) => setUser(name.target.value)}/>
                         </div>
 
-                        <div class="input-parent">
+                        <div className="input-parent">
                             {location.pathname == '/' ? <label>Password</label> : <label>Create password</label>}
                             <input type="password" id="password" onChange={(senha) => setPassword(senha.target.value)}/>
                         </div>
 
                         {location.pathname == '/' ? 
-                        <button type="submit" onClick={()=>{}} className="btn_loginRegister">Login</button> : <button className="btn_loginRegister" type="submit" onClick={()=>{}}>Create</button>
+                        <button type="submit" onClick={tocaMusica} className="btn_loginRegister">Login</button> : <button className="btn_loginRegister" type="submit" onClick={()=>{}}>Create</button>
                         }
                     </form>
 

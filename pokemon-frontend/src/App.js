@@ -7,11 +7,14 @@ import Home from './components/Home/home.js'
 import Menu from './components/Menu/menu.js'
 import Game from './components/Game/game.js';
 import MyPokemons from "./components/MyPokemons/myPokemons";
-import PokemonTheme from "../src/PokemonTheme.mp3";
+
+import PokemonTheme from "./PokemonTheme.mp3";
 
 function App() {
   return (
+    
     <div className="App">
+      <audio id="music" src={PokemonTheme} type="audio/mp3" loop={true}/>
       <Router>  
         <Routes >
           <Route exact path="/" element={<LoginOrRegister/>}/>

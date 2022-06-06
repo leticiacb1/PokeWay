@@ -4,13 +4,13 @@
 
     left: 50%;
     margin-left: -11rem;
-    top: 50%;
+    top: 45%;
     margin-top: -11rem;
 
     z-index:4;
 
     width: 22rem;
-    height: 26rem;      
+    height: 30rem;      
 
     background-color: white;
     opacity: 1;
@@ -107,3 +107,9 @@ label {
     margin-top: 2rem;
     width: 12rem;
 } */
+
+
+.msg{
+    position: absolute;
+    top: -1rem;
+}

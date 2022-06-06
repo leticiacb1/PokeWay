@@ -14,8 +14,36 @@ import Background from "../AnimatedBackground/backgroung.js";
 function LoginOrRegister(){
     const [user, setUser] = useState('')
     const [password, setPassword] = useState('')
+    const [message, setMessage] = useState('')
     const navigate = useNavigate();
     const location = useLocation();
+
+    async function getMessage(){
+        let username = 'lorrancml';
+        let response = await axios.get(`https://enigmatic-bayou-56424.herokuapp.com/${username}/token`);
+        console.log("O token é: "+ response.data.token);
+        let token = response.data.token;
+        console.log("Agora, vamos pegar a mensagem");
+
+        axios({
+            method:'post',
+            url:`https://enigmatic-bayou-56424.herokuapp.com/${username}/message`, 
+            data:{
+              "token": token
+            },}).then(
+                (resposta) => {
+                    console.log("A mensagem é:");
+                    console.log(resposta.data.mensagem);
+                    setMessage(resposta.data.mensagem);
+                    } 
+        );
+    }
+    
+    useEffect(()=>{
+        console.log("Primeiro pegamos o token:");
+        getMessage();
+    },[]);
+
     
     function handleUpdate(event){
         event.preventDefault();
@@ -101,6 +129,7 @@ function LoginOrRegister(){
 
             <div className="backScreenLogin">
                 <div className="login">
+                    <h5 className="msg">{message}</h5>
 
                     {location.pathname == '/' ? <h2 className="typeCount">Login to your account</h2> : <h2 className="typeCount" >Create account</h2>}
                     

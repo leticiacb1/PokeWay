@@ -57,6 +57,6 @@ npm start
 
 1. Apenas clique <a href = "https://pokewaygame.herokuapp.com/">aqui</a>.
 
-<p align="center"><img src='https://thumbs.gfycat.com/LivelyBraveAmericanriverotter-size_restricted.gif'></img></p>
+<p align="center"><img src='https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMG53dWQ1OHRnZzkzaDk3enE5bjM2MTFzdWpvODNvODRnc2hiYnhybiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/rSoAedKMM2tKp6kTI9/giphy.gif'></img></p>
 
 @2022, Insper. Quarto Semestre, Engenharia da Computação.
